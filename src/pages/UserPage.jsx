@@ -1,34 +1,33 @@
-// src/pages/UserPage.jsx
 
-// Importando componentes do react-bootstrap (note que não precisamos mais do Container aqui)
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
 
 function UserPage() {
 
-  // Dados de exemplo (mock)
+  // Dados (mockados) do usuário
   const userData = {
-    nome: 'Anderson',
-    sobrenome: 'Guimarães',
-    email: 'anderson.g@email.com',
+    nome: 'José',
+    sobrenome: 'Alves',
+    email: 'josealves@email.com',
+    telefone: '(85) 99999-8888',
     aniversario: '1990-06-15',
     cpf: '123.456.789-00',
     nomeMae: 'Maria da Silva',
     endereco: {
-      rua: 'Rua das Flores, 123',
-      cidade: 'São Paulo',
-      estado: 'SP',
+      rua: 'Avenida 13 de Maio, 123',
+      cidade: 'Fortaleza',
+      estado: 'CE',
       cep: '01234-567'
     },
     profilePic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
   };
 
   return (
-    // Usamos um Fragmento <> pois o container principal agora está no App.jsx
+    
     <>
-      {/* A classe py-4 foi movida para a Row para manter o espaçamento vertical */}
+      {}
       <Row className="py-4">
 
-        {/* --- Coluna da Esquerda: Foto de Perfil --- */}
+        {/*Coluna da Esquerda: Foto de Perfil */}
         <Col xs={12} xl={4}>
           <Row>
             <Col xs={12}>
@@ -47,7 +46,7 @@ function UserPage() {
           </Row>
         </Col>
 
-        {/* --- Coluna da Direita: Formulário de Dados --- */}
+        {/*Coluna da Direita: Formulário de Dados */}
         <Col xs={12} xl={8}>
           <Card className="shadow-sm">
             <Card.Header>
@@ -71,18 +70,24 @@ function UserPage() {
                   </Col>
                 </Row>
 
-                {/* Linha: Aniversário e Email */}
+                {/* Linha: Aniversário, Email e Telefone */}
                 <Row className="mb-3">
-                  <Col md={6}>
+                  <Col md={4}>
                     <Form.Group id="birthday">
                       <Form.Label>Aniversário</Form.Label>
                       <Form.Control type="date" defaultValue={userData.aniversario} />
                     </Form.Group>
                   </Col>
-                   <Col md={6}>
+                  <Col md={4}>
                     <Form.Group id="email">
                       <Form.Label>Email</Form.Label>
                       <Form.Control type="email" placeholder="nome@exemplo.com" defaultValue={userData.email} required />
+                    </Form.Group>
+                  </Col>
+                  <Col md={4}>
+                    <Form.Group id="telefone">
+                      <Form.Label>Telefone</Form.Label>
+                      <Form.Control type="text" placeholder="(00) 00000-0000" defaultValue={userData.telefone} />
                     </Form.Group>
                   </Col>
                 </Row>
