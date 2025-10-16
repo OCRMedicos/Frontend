@@ -2,6 +2,7 @@
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
 import { Container, Navbar ,  Modal} from "react-bootstrap";
 import { useState } from 'react';
+import Login from "./Longin";
 
 function UserPage() {
 
@@ -22,18 +23,13 @@ function UserPage() {
     },
     profilePic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
   };
- const [showLogoutModal, setShowLogoutModal] = useState(false);
-   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handleLogout = () => setShowLogoutModal(true);
   const confirmLogout = () => {
     setShowLogoutModal(false);
     setIsLoggedIn(false);
-  };
- const handleSendCredentials = (user) => {
-    // Simular de envio
-    alert(`Credenciais enviadas para ${user.email}!\nEmail: ${user.email}\nSenha: ${user.password}`);
-    
   };
 
   if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
