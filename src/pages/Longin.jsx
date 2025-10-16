@@ -56,7 +56,7 @@ function Login() {
                   </Form.Group>
                 
                   <Link
-                    to="/dashboard"
+                    to="/admin"
                     className="btn btn-primary w-100"
                   >
                     Entrar
