@@ -1,3 +1,4 @@
+// src/pages/UserPage.jsx
 
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
 
@@ -24,7 +25,6 @@ function UserPage() {
   return (
     
     <>
-      {}
       <Row className="py-4">
 
         {/*Coluna da Esquerda: Foto de Perfil */}
@@ -38,7 +38,8 @@ function UserPage() {
                   <div>{userData.endereco.cidade}</div>
                   
                   <div className="d-grid mt-3">
-                    <Button variant="primary">Mudar Foto</Button>
+                    {/* Alterado para variant="info" para obter o azul mais claro */}
+                    <Button variant="info">Mudar Foto</Button>
                   </div>
                 </Card.Body>
               </Card>
@@ -140,7 +141,8 @@ function UserPage() {
                 </Row>
                 
                 <div className="mt-3">
-                  <Button variant="primary" type="submit">Salvar Alterações</Button>
+                  {/* Alterado para variant="info" para obter o azul mais claro */}
+                  <Button variant="info" type="submit">Salvar Alterações</Button>
                 </div>
 
               </Form>
