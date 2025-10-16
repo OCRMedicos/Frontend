@@ -13,20 +13,20 @@ function Login() {
     <main>
       <section className="">
         <Container
-          className="container-fluid vh-100 d-flex align-items-center justify-content-center bg-center bg-cover"
+          className="container-fluid vh-100 d-flex align-items-center justify-content-center bg-center bg-cover "
           style={{
             backgroundImage: `url(${BgImage})`,
             backgroundRepeat: "no-repeat",
           }}
         >
 
-          <Row className="p-5 m-5" >
+          <Row className="" >
             <Col xs={12} className="d-flex align-items-center justify-content-center">
               <div className="bg-white shadow-soft border rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                 <div className="text-center text-md-center mb-4 mt-md-0">
                   <h3 className="mb-0">Acesse nossa plataforma</h3>
                 </div>
-                <Form className="mt-4">
+                <Form className="p-5 m-5 ">
                   <Form.Group id="email" className="mb-4">
                     <Form.Label>Seu e-mail</Form.Label>
                     <InputGroup>
