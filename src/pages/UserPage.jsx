@@ -25,6 +25,7 @@ function UserPage() {
   return (
     
     <>
+      {}
       <Row className="py-4">
 
         {/*Coluna da Esquerda: Foto de Perfil */}
@@ -151,6 +152,7 @@ function UserPage() {
         </Col>
 
       </Row>
+      </main>
     </>
   );
 }
