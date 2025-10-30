@@ -1,0 +1,10 @@
+.dashboard-footer {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 14px;
+  /* Cor de fundo para combinar com o body */
+  background-color: #f9f9f9; 
+  /* Uma borda leve para separar do conteúdo */
+  border-top: 1px solid #eee; 
+}

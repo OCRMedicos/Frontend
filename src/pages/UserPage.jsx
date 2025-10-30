@@ -1,7 +1,6 @@
 // src/pages/UserPage.jsx
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
 
-
 function UserPage() {
 
   // Dados (mockados) do usuário
@@ -24,9 +23,13 @@ function UserPage() {
 
 
   return (
-
+    // <> Abertura do Fragmento
     <>
-
+      {/* O seu Layout.jsx já tem a tag <main>.
+        O ideal é usar a classe 'container' aqui, ou no
+        componente pai, mas vamos manter seu <main> por enquanto
+        e garantir que ele FECHE corretamente.
+      */}
       <main className='container'>
         <Row className="py-4">
 
@@ -48,6 +51,8 @@ function UserPage() {
               </Col>
             </Row>
           </Col>
+
+          {/* ----- A PARTE QUE ESTAVA FALTANDO ----- */}
 
           {/*Coluna da Direita: Formulário de Dados */}
           <Col xs={12} xl={8}>
@@ -150,10 +155,11 @@ function UserPage() {
               </Card.Body>
             </Card>
           </Col>
+          {/* ----- FIM DA PARTE QUE FALTAVA ----- */}
 
         </Row>
-
-      </main>
+      </main> 
+      {/* </> Fechamento do Fragmento */}
     </>
   );
 }

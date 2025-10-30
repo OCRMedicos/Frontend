@@ -149,10 +149,3 @@ body, html {
     transform: scale(1.2);
 }
 
-/* Rodapé */
-.dashboard-footer {
-    text-align: center;
-    margin-top: 30px;
-    color: #666;
-    font-size: 14px;
-}
