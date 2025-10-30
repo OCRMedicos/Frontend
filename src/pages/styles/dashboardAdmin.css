@@ -1,0 +1,158 @@
+/* Reset e body */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Container principal */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.logout-btn {
+    background: none;
+    border: 1px solid red;
+    color: red;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background: red;
+    color: white;
+}
+
+/* Conteúdo centralizado vertical e horizontalmente */
+.dashboard-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Card principal */
+.dashboard-card {
+    width: 90%;
+    max-width: 1000px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Título e botão novo usuário */
+.dashboard-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.new-user-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.new-user-btn:hover {
+    background: #0056b3;
+}
+
+/* Tabela */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.user-table th,
+.user-table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.user-table th {
+    border-bottom: 2px solid #ddd;
+}
+
+/* Status */
+.status {
+    padding: 2px 8px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.status.active {
+    background: #28a745;
+}
+
+.status.inactive {
+    background: #6c757d;
+}
+
+.status.pending {
+    background: #ffc107;
+    color: #000;
+}
+
+
+/* Ações */
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn,
+.delete-btn {
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.edit-btn {
+    color: #007bff;
+}
+
+.delete-btn {
+    color: red;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Rodapé */
+.dashboard-footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #666;
+    font-size: 14px;
+}
