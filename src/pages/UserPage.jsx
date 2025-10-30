@@ -1,5 +1,4 @@
 // src/pages/UserPage.jsx
-
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
 
 
