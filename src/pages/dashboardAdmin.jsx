@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Container, Table, Button, Modal, Form, Navbar } from "react-bootstrap";
 import { FaEdit, FaTrash, FaEnvelope } from "react-icons/fa";
-import Login from "./Longin";
 import "./styles/dashboardAdmin.css";
 
 function App() {
@@ -15,8 +14,7 @@ function App() {
   const [editingUser, setEditingUser] = useState(null);
   const [form, setForm] = useState({ name: "", email: "", password: "", phone: "", address: "", status: "Ativo" });
 
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
 
   const handleOpenModal = (user = null) => {
     if (user) {
@@ -57,11 +55,7 @@ function App() {
     }
   };
 
-  const handleLogout = () => setShowLogoutModal(true);
-  const confirmLogout = () => {
-    setShowLogoutModal(false);
-    setIsLoggedIn(false);
-  };
+
 
   // Enviar credenciais por email
   const handleSendCredentials = (user) => {
@@ -70,18 +64,10 @@ function App() {
     
   };
 
-  if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
+  
 
   return (
     <div className="dashboard-container">
-      <Navbar bg="light" className="dashboard-header">
-        <Container>
-          <Navbar.Brand>Admin Dashboard</Navbar.Brand>
-          <Button className="logout-btn" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Container>
-      </Navbar>
 
       <div className="dashboard-content">
         <Container className="dashboard-card">
@@ -165,24 +151,11 @@ function App() {
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>Cancelar</Button>
-          <Button variant="primary" onClick={handleSave}>Salvar</Button>
-        </Modal.Footer>
+      
+      
       </Modal>
 
-      {/* Modal de Logout */}
-      <Modal show={showLogoutModal} onHide={() => setShowLogoutModal(false)} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Logout</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Logout realizado com sucesso! Você será redirecionado para a tela de login.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={confirmLogout}>Ok</Button>
-        </Modal.Footer>
-      </Modal>
+     
     </div>
   );
 }

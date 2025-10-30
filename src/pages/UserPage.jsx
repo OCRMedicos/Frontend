@@ -1,8 +1,6 @@
 
 import { Col, Row, Card, Form, Button, Image } from 'react-bootstrap';
-import { Container, Navbar ,  Modal} from "react-bootstrap";
-import { useState } from 'react';
-import Login from "./Longin";
+
 
 function UserPage() {
 
@@ -23,29 +21,12 @@ function UserPage() {
     },
     profilePic: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
   };
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-  const handleLogout = () => setShowLogoutModal(true);
-  const confirmLogout = () => {
-    setShowLogoutModal(false);
-    setIsLoggedIn(false);
-  };
-
-  if (!isLoggedIn) return <Login onLogin={() => setIsLoggedIn(true)} />;
 
 
   return (
 
     <>
-      <Navbar bg="light" className="dashboard-header">
-        <Container>
-          <Navbar.Brand>Admin Dashboard</Navbar.Brand>
-          <Button className="logout-btn" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Container>
-      </Navbar>
+
       <main className='container'>
         <Row className="py-4">
 
@@ -171,17 +152,7 @@ function UserPage() {
           </Col>
 
         </Row>
-        <Modal show={showLogoutModal} onHide={() => setShowLogoutModal(false)} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Logout</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Logout realizado com sucesso! Você será redirecionado para a tela de login.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={confirmLogout}>Ok</Button>
-        </Modal.Footer>
-      </Modal>
+
       </main>
     </>
   );
