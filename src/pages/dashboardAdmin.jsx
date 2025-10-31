@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { Container, Table, Button, Modal, Form, Navbar } from "react-bootstrap";
+import { Container, Table, Button } from "react-bootstrap";
 import { FaEdit, FaTrash, FaEnvelope } from "react-icons/fa";
-import "./styles/dashboardAdmin.css";
+import UserModal from "../components/Modals/UserModal.jsx";
+import usersData from "../data/index.jsx";
+
 
 function App() {
-  const [users, setUsers] = useState([
-    { id: 1, name: "Maycon", email: "exemplo@exemplo.com", password: "123456", phone: "99999-9999", address: "Rua A, 123", date: "16 Oct 2025", status: "Ativo" },
-    { id: 2, name: "Teste 1", email: "exemplo@exemplo.com", password: "123456", phone: "", address: "", date: "14 Oct 2025", status: "Ativo" },
-    { id: 3, name: "Teste 2", email: "exemplo@exemplo.com", password: "123456", phone: "", address: "", date: "13 Oct 2025", status: "Inativo" },
-  ]);
-
+  const [users, setUsers] = useState(usersData);
   const [showModal, setShowModal] = useState(false);
   const [editingUser, setEditingUser] = useState(null);
-  const [form, setForm] = useState({ name: "", email: "", password: "", phone: "", address: "", status: "Ativo" });
-
-
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    address: "",
+    status: "Ativo",
+  });
 
   const handleOpenModal = (user = null) => {
     if (user) {
@@ -47,28 +49,24 @@ function App() {
 
   const getStatusClass = (status) => {
     switch (status) {
-      case "Ativo": return "active";
-      case "Inativo": return "inactive";
-      case "Pendente": return "pending";
-      case "Suspendido": return "pending";
-      default: return "";
+      case "Ativo":
+        return "active";
+      case "Inativo":
+        return "inactive";
+      case "Pendente":
+      case "Suspendido":
+        return "pending";
+      default:
+        return "";
     }
   };
 
-
-
-  // Enviar credenciais por email
   const handleSendCredentials = (user) => {
-    // Simular de envio
     alert(`Credenciais enviadas para ${user.email}!\nEmail: ${user.email}\nSenha: ${user.password}`);
-    
   };
-
-  
 
   return (
     <div className="dashboard-container">
-
       <div className="dashboard-content">
         <Container className="dashboard-card">
           <div className="dashboard-title d-flex justify-content-between align-items-center mb-3">
@@ -100,9 +98,15 @@ function App() {
                     <span className={`status ${getStatusClass(u.status)}`}>{u.status}</span>
                   </td>
                   <td className="actions">
-                    <Button className="edit-btn" onClick={() => handleOpenModal(u)}><FaEdit /></Button>
-                    <Button className="delete-btn" onClick={() => handleDelete(u.id)}><FaTrash /></Button>
-                    <Button className="send-btn" onClick={() => handleSendCredentials(u)}><FaEnvelope /></Button>
+                    <Button className="edit-btn" onClick={() => handleOpenModal(u)}>
+                      <FaEdit />
+                    </Button>
+                    <Button className="delete-btn" onClick={() => handleDelete(u.id)}>
+                      <FaTrash />
+                    </Button>
+                    <Button className="send-btn" onClick={() => handleSendCredentials(u)}>
+                      <FaEnvelope />
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -113,49 +117,15 @@ function App() {
         </Container>
       </div>
 
-      {/* Modal de cliente */}
-      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>{editingUser ? "Editar Cliente" : "Novo Cliente"}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Nome *</Form.Label>
-              <Form.Control value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>E-mail *</Form.Label>
-              <Form.Control type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Senha *</Form.Label>
-              <Form.Control type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Telefone</Form.Label>
-              <Form.Control value={form.phone || ""} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Endereço</Form.Label>
-              <Form.Control value={form.address || ""} onChange={(e) => setForm({ ...form, address: e.target.value })} />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Status</Form.Label>
-              <Form.Select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}>
-                <option>Ativo</option>
-                <option>Inativo</option>
-                <option>Pendente</option>
-
-              </Form.Select>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-      
-      
-      </Modal>
-
-     
+      {/* Modal separado */}
+      <UserModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        form={form}
+        setForm={setForm}
+        onSave={handleSave}
+        editingUser={editingUser}
+      />
     </div>
   );
 }

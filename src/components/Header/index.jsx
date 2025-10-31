@@ -1,37 +1,41 @@
-import { Navbar , Container, Button } from "react-bootstrap";
-import ModalLogout from "../Modals/logout";
-import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Header() {
-
-
-const [showLogoutModal, setShowLogoutModal] = useState(false);
-const [isLoggedIn, setIsLoggedIn] = useState(true);
- 
-    const handleLogout = () => setShowLogoutModal(true);
-    const confirmLogout = () => {
-        setShowLogoutModal(false);
-        setIsLoggedIn(false);
-    };
- if (!isLoggedIn) {
-    return <Navigate to="/" replace />;
-  }
-
-    return (
-        <>
-            <Navbar bg="light" className="dashboard-header">
-                <Container>
-                    <Navbar.Brand>Admin Dashboard</Navbar.Brand>
-                    <Button className="logout-btn" onClick={handleLogout}>
-                        Logout
-                    </Button>
-                </Container>
-            </Navbar>
-
-            <ModalLogout setShowLogoutModal={setShowLogoutModal} showLogoutModal={showLogoutModal} confirmLogout={confirmLogout}/>
-        </>
-    )
+  return (
+    <>
+      <Navbar bg="light" expand="lg" className="dashboard-header py-4">
+        <Container>
+          <Navbar.Brand href="#home" className="brand-logo">
+            <span className="logo-text fw-bold text-dark">CE NANO INK</span>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto align-items-center">
+              <Nav.Link href="#produtos" className="nav-link-custom">
+                Produtos
+              </Nav.Link>
+              <Nav.Link href="#aplicacoes" className="nav-link-custom">
+                Aplicações
+              </Nav.Link>
+              <Nav.Link href="#cases" className="nav-link-custom">
+                Cases de Sucesso
+              </Nav.Link>
+              <Nav.Link href="#contato" className="nav-link-custom">
+                Contato
+              </Nav.Link>
+              {/* Botão de Login */}
+              <div className="d-flex mt-2 mt-lg-0 ms-lg-3">
+                <Link className="btn btn-primary" to="/login">
+                  Login
+                </Link>
+              </div>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
+  );
 }
 
-export default Header
+export default Header;
